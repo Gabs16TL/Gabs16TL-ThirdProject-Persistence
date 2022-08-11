@@ -11,9 +11,6 @@ WHERE playerturn.id_playerturn IS NULL;
 SELECT DISTINCT player.id_player, player.playername FROM player
 INNER JOIN playerturn ON player.id_player = playerturn.id_playerturn
 WHERE playerturn.winn = 1;
----IDK
-SELECT id_player, playername FROM player
-WHERE win_points > 0;
 
 -- Listado de Jugadores que no han perdido una partida
 SELECT id_player, playername FROM player
@@ -109,7 +106,7 @@ GROUP BY player.id_player, player.playername
 ORDER BY OP DESC
 FETCH NEXT 1 ROWS ONLY;
 
--- Jugador de Hangman con más intentos para ganarend
+-- Jugador de Hangman con más intentos para ganar
 SELECT MAX(playerturn.opportunities) AS OP, player.playername FROM player
 INNER JOIN playerturn
 ON player.id_player = playerturn.id_player
@@ -130,3 +127,4 @@ WHERE game_id_game = 001 AND end = 1;
 SELECT AVG(COUNT(*)) AS "Average of words"
 FROM secretword
 GROUP BY id_hangedman;
+
